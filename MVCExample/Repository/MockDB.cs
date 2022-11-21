@@ -10,7 +10,7 @@ namespace MVCExample.Repository
         {
             new Match()
             {
-                MatchID = 1,
+                MatchId = 1,
                 MatchDate = DateTime.Now,
                 OpponentTeam = "Portugal",
                 MatchVenue = "Lisbon"
@@ -24,7 +24,7 @@ namespace MVCExample.Repository
 
         void IRepository.DeleteMatch(Match m)
         {
-            var f = Matches.Find(x => x.MatchID == m.MatchID);
+            var f = Matches.Find(x => x.MatchId == m.MatchId);
             if (f != null)
             {
                 Matches.Remove(f);
@@ -38,7 +38,7 @@ namespace MVCExample.Repository
         void IRepository.EditMatch(Match m)
         {
             // find match
-            var f = Matches.Find(x => x.MatchID == m.MatchID);
+            var f = Matches.Find(x => x.MatchId == m.MatchId);
             if (f != null)
             {
                 // edit goals for
@@ -51,7 +51,7 @@ namespace MVCExample.Repository
 
         public Match FindMatch(int ID)
         {
-            var found = Matches.FirstOrDefault(x => x.MatchID == ID);
+            var found = Matches.FirstOrDefault(x => x.MatchId == ID);
             return found;
         }
 

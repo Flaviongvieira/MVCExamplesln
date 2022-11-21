@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IRepository, MockDB>(); // to specify DB being used
+builder.Services.AddScoped<IRepository, RealDB>(); // to specify DB being used
 
 var app = builder.Build();
 

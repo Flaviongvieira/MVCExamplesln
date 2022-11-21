@@ -43,11 +43,11 @@ namespace MVCExample.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // Collect maximum MatchID
-                    int mID = 0;
+                    // Collect maximum MatchId
+                    /*int mID = 0;
                     var ss = _repo.DisplayMatches();
                     mID = ss.Count()+1;
-                    m.MatchID = mID;
+                    m.MatchId = mID;*/
 
                     // Add Match to repo
                     _repo.AddMatch(m);
@@ -95,6 +95,7 @@ namespace MVCExample.Controllers
             var m = _repo.FindMatch(id);
             return View(m);
         }
+
 
         // POST: MatchesController/Delete/5
         [HttpPost]

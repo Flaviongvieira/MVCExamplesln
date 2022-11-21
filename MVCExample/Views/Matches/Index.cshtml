@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MatchID)
+                @Html.DisplayNameFor(model => model.MatchId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MatchDate)
@@ -37,7 +37,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MatchID)
+                @Html.DisplayFor(modelItem => item.MatchId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MatchDate)
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.GoalsAgainst)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.MatchID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.MatchID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.MatchID })
+                @Html.ActionLink("Edit", "Edit", new { id=item.MatchId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.MatchId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.MatchId })
             </td>
         </tr>
 }

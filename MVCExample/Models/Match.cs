@@ -7,7 +7,7 @@ namespace MVCExample.Models
     public class Match
     {
         // Match ID
-        public int MatchID { get; set; }
+        public int MatchId { get; set; }
 
         // Match Date
         [Display(Name = "Match Date")]
