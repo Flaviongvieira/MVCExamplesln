@@ -20,7 +20,8 @@ namespace MVCExample.Repository
         public Match FindMatch(int ID);
 
         // Display Stats
-        public void DisplayStats();
+        public (int wons, int lost, int draw, int points, int goaldif) stats();
+
 
     }
 }

@@ -55,11 +55,9 @@ namespace MVCExample.Repository
             return found;
         }
 
-        void IRepository.DisplayStats()
+        (int wons, int lost, int draw, int points, int goaldif) IRepository.stats()
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

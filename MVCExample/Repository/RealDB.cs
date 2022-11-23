@@ -59,5 +59,27 @@ namespace MVCExample.Repository
             var found = ct.Matches.FirstOrDefault(x => x.MatchId == ID);
             return found;
         }
+
+        (int wons, int lost, int draw, int points, int goaldif) IRepository.stats()
+        {
+            var played = ct.Matches.Where(x => x.MatchDate < DateTime.Today.Date);
+            var wons = played.Where(x => (x.GoalsAgainst < x.GoalsFor)).ToList().Count();
+            var lost = played.Where(x => (x.GoalsAgainst > x.GoalsFor)).ToList().Count();
+            var draw = played.Where(x => (x.GoalsAgainst == x.GoalsFor)).ToList().Count();
+
+            var points = wons * 3 + draw * 1;
+
+            var goaldif = 0;
+            int gf = 0;
+            int ga = 0;
+            foreach (var g in played)
+            {
+                gf += g.GoalsFor;
+                ga += g.GoalsAgainst;
+                goaldif = gf - ga;
+            }
+
+            return (wons, lost,draw,points,goaldif);
+        }
     }
 }
