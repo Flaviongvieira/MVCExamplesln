@@ -6,10 +6,7 @@ namespace MVCExample.Repository
     {
         // Initiate the DBContext when we use this repository
         MatchContext ct;
-        public RealDB()
-        {
-            ct = new MatchContext();
-        }
+        public RealDB() { ct = new MatchContext();}
 
         // Functions inherited from IRepository
         public void AddMatch(Match m)
@@ -35,11 +32,6 @@ namespace MVCExample.Repository
             return ct.Matches.ToList();
         }
 
-        public void DisplayStats()
-        {
-            throw new NotImplementedException();
-        }
-
         public void EditMatch(Match m)
         {
             // find match
@@ -60,26 +52,26 @@ namespace MVCExample.Repository
             return found;
         }
 
-        (int wons, int lost, int draw, int points, int goaldif) IRepository.stats()
+        Stats IRepository.stats()
         {
+            var stats = new Stats();
             var played = ct.Matches.Where(x => x.MatchDate < DateTime.Today.Date);
-            var wons = played.Where(x => (x.GoalsAgainst < x.GoalsFor)).ToList().Count();
-            var lost = played.Where(x => (x.GoalsAgainst > x.GoalsFor)).ToList().Count();
-            var draw = played.Where(x => (x.GoalsAgainst == x.GoalsFor)).ToList().Count();
+            stats.Won = played.Where(x => (x.GoalsAgainst < x.GoalsFor)).ToList().Count();
+            stats.Lost = played.Where(x => (x.GoalsAgainst > x.GoalsFor)).ToList().Count();
+            stats.Draw = played.Where(x => (x.GoalsAgainst == x.GoalsFor)).ToList().Count();
 
-            var points = wons * 3 + draw * 1;
+            stats.Points = stats.Won * 3 + stats.Draw * 1;
 
-            var goaldif = 0;
             int gf = 0;
             int ga = 0;
             foreach (var g in played)
             {
                 gf += g.GoalsFor;
                 ga += g.GoalsAgainst;
-                goaldif = gf - ga;
+                stats.GoalDif = gf - ga;
             }
 
-            return (wons, lost,draw,points,goaldif);
+            return stats;
         }
     }
 }

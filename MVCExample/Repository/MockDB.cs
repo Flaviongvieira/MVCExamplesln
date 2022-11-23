@@ -55,7 +55,7 @@ namespace MVCExample.Repository
             return found;
         }
 
-        (int wons, int lost, int draw, int points, int goaldif) IRepository.stats()
+        Stats IRepository.stats()
         {
             throw new NotImplementedException();
         }

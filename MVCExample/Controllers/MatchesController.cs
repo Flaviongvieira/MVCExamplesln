@@ -9,23 +9,12 @@ namespace MVCExample.Controllers
     {
         // Initiate Repository
         IRepository _repo;
-        public MatchesController(IRepository repo)
-        {
-            _repo = repo;
-        }
+        public MatchesController(IRepository repo) { _repo = repo; }
 
         // GET: MatchesController
         public ActionResult Stats()
         {
-            var stats = new Stats();
-
-            // linq statments on DB side
-            stats.Won = _repo.stats().wons;
-            stats.Lost = _repo.stats().lost;
-            stats.Draw = _repo.stats().draw;
-            stats.GoalDif = _repo.stats().goaldif;
-            stats.Points = _repo.stats().points;
-
+            var stats = _repo.stats();
             return View(stats);
         }
 
