@@ -22,9 +22,9 @@ namespace MVCExample.Repository
             Matches.Add(m);
         }
 
-        void IRepository.DeleteMatch(Match m)
+        void IRepository.DeleteMatch(int ID)
         {
-            var f = Matches.Find(x => x.MatchId == m.MatchId);
+            var f = Matches.Find(x => x.MatchId == ID);
             if (f != null)
             {
                 Matches.Remove(f);

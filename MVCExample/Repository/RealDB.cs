@@ -18,10 +18,16 @@ namespace MVCExample.Repository
             ct.SaveChanges();
         }
 
-        public void DeleteMatch(Match m)
+        public void DeleteMatch(int ID)
         {
-            ct.Matches.Remove(m);
-            ct.SaveChanges();
+            // find match
+            var f = ct.Matches.FirstOrDefault(x => x.MatchId == ID);
+            if (f != null)
+            {
+                ct.Matches.Remove(f);
+                ct.SaveChanges();
+            }
+            
         }
 
         public List<Match> DisplayMatches()

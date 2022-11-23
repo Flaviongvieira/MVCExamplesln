@@ -11,7 +11,7 @@ namespace MVCExample.Repository
         public void EditMatch(Match m);
 
         // Delete a match from DB
-        public void DeleteMatch(Match m);
+        public void DeleteMatch(int ID);
 
         // Display all Matches
         List<Match> DisplayMatches();

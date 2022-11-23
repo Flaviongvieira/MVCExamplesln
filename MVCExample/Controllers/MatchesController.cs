@@ -98,13 +98,13 @@ namespace MVCExample.Controllers
 
 
         // POST: MatchesController/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Match m)
+        public ActionResult DeleteConfirmed(int ID)
         {
             try
             {
-                _repo.DeleteMatch(m);
+                _repo.DeleteMatch(ID);
                 return RedirectToAction(nameof(Index));
             }
             catch
